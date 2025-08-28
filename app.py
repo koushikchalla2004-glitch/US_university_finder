@@ -57,6 +57,10 @@ with colL:
 with colR:
     st.info("Tip: you can export results at the bottom as CSV.")
 
+if not os.getenv("SCORECARD_API_KEY"):
+    st.error("SCORECARD_API_KEY not found — add it in Streamlit Secrets or .env")
+
+
 if st.session_state.get("go"):
     client = ScorecardClient()
     # Resolve CIP code from course string
